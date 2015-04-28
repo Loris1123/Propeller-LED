@@ -1,2 +1,2 @@
 # Propeller-LED
-Sourcecode for an propeller-LED-Display
+Sourcecode for an propeller-LED-Display using Atmel µC

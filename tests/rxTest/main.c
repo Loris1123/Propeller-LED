@@ -4,32 +4,46 @@
  * Description: Main file for the rx-Test
  */
 
-#define BAUD_PRESCALER 0x0067  // 9600 baud
+
+//Daten für Uart Kommunikation
+//#define FOSC 16000000 // Clock Speed
+//#define BAUD 9600
+//#define MYUBRR FOSC/16/BAUD-1
+
+
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-void init_USART(void){
-    // Set baudrate
+// Calculate Baudrate
+#define BAUDRATE 9600
+#define BAUD_PRESCALER (((F_CPU / (BAUDRATE * 16UL))) - 1)
+
+void USART_init(void){
+
+    // Set baud
     UBRR0 = BAUD_PRESCALER;
-    // 8 data, 1 Stopbit
-    UCSR0C = (0 << USBS0) | (1 << UCSZ01) | (1 << UCSZ00);
-    // Enable Reciever. Disable transmitter, Enable receive complete interrupt
-    UCSR0B = (1 << RXCIE0) | (1 << RXEN0) | (0 << TXEN0);
+
+    // Enable UART Receive and Receivecomplete Interrupt
+    UCSR0B = (1<<RXEN0) | (1 << RXCIE0);
+
+    // Set frameformat to 8 Data and 1 Stopbit
+    UCSR0C = ((1<<UCSZ00)|(1<<UCSZ01));
+
 }
 
 int main(void) {
+    sei();      // Enable global interrupts
+    USART_init();
 
-    sei();
     DDRB = (1 << PB5); // Set Pin5 of PortD as Output (LED)
-    init_USART();
 
-    while(1){
+    while (1){
 
     }
     return 0;
 }
 
-ISR(USART0_RX_vect){
+ISR(USART_RX_vect){
     PORTB = (1 << PB5);  // Enable LED to notify something has been transmitted
 }

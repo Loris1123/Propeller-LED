@@ -7,6 +7,7 @@
 #define BAUD_PRESCALER 0x0067  // 9600 baud
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 
 void init_USART(void){
     // Set baudrate

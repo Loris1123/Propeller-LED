@@ -1,7 +1,7 @@
 /**
  * Author: https://github.com/Loris1123
  * Created: 2015-05-08
- * Description: Main file for the rx-Test
+ * Description: Main file for the rx-Test. Data will be transmitted from a Raspberry Pi to Arduino via cable
  */
 
 
@@ -11,6 +11,9 @@
 // Calculate Baudrate
 #define BAUDRATE 9600
 #define BAUD_PRESCALER (((F_CPU / (BAUDRATE * 16UL))) - 1)
+
+char text[20];
+
 
 void USART_init(void){
 
@@ -25,11 +28,21 @@ void USART_init(void){
 
 }
 
+void rx_to_led(int rx){
+    int b = rx >> 2;
+    int d = (rx & 3) << 6;
+
+    PORTB = b;
+    PORTD = d;
+}
+
 int main(void) {
+
+    DDRB = (1 << PB0) | (1 << PB1) |(1 << PB2) |(1 << PB3) |(1 << PB4) | (1 << PB5);
+    DDRD = (1 << PD6) | (1 << PD7);
+
     sei();      // Enable global interrupts
     USART_init();
-
-    DDRB = (1 << PB5); // Set Pin5 of PortD as Output (LED)
 
     while (1){
 
@@ -38,5 +51,6 @@ int main(void) {
 }
 
 ISR(USART_RX_vect){
-    PORTB = (1 << PB5);  // Enable LED to notify something has been transmitted
+    int next_sign  = UDR0;
+    rx_to_led(next_sign);
 }

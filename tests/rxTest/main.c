@@ -7,18 +7,20 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <util/setbaud.h>
 
-// Calculate Baudrate
-#define BAUDRATE 9600
-#define BAUD_PRESCALER (((F_CPU / (BAUDRATE * 16UL))) - 1)
-
-char text[20];
-
+#define BAUD 9600
 
 void USART_init(void){
 
     // Set baud
-    UBRR0 = BAUD_PRESCALER;
+    UBRR0H = UBRRH_VALUE;
+    UBRR0L = UBRRL_VALUE;
+    #if USE_2X
+        UCSR0A |= (1 << U2X0);
+    #else
+        UCSR0A &= ~(1 << U2X0);
+    #endif
 
     // Enable UART Receive and Receivecomplete Interrupt
     UCSR0B = (1<<RXEN0) | (1 << RXCIE0);

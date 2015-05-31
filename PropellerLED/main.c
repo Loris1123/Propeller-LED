@@ -114,46 +114,46 @@ int main(void){
                     letter_l();
                     break;
                 case 'm':
-                    letter_m();
+                    //letter_m();
                     break;
                 case 'n':
-                    letter_n();
+                    //letter_n();
                     break;
                 case 'o':
-                    letter_o();
+                    //letter_o();
                     break;
                 case 'p':
-                    letter_p();
+                    //letter_p();
                     break;
                 case 'q':
-                    letter_q();
+                    //letter_q();
                     break;
                 case 'r':
-                    letter_r();
+                    //letter_r();
                     break;
                 case 's':
-                    letter_s();
+                    //letter_s();
                     break;
                 case 't':
-                    letter_t();
+                    //letter_t();
                     break;
                 case 'u':
-                    letter_u();
+                    //letter_u();
                     break;
                 case 'v':
-                    letter_v();
+                    //letter_v();
                     break;
                 case 'w':
-                    letter_w();
+                    //letter_w();
                     break;
                 case 'x':
-                    letter_x();
+                    //letter_x();
                     break;
                 case 'y':
-                    letter_y();
+                    //letter_y();
                     break;
                 case 'z':
-                    letter_z();
+                    //letter_z();
                     break;
             }
         }
@@ -183,19 +183,25 @@ void char_to_led(uint8_t rx){
 
 // Methods for printing letters
 void letter_a(void){
-    char_to_led(0b01111110);
-    _delay_ms(mydelay);
-    char_to_led(0b00001001);
-    _delay_ms(mydelay);
-    char_to_led(0b00001001);
-    _delay_ms(mydelay);
-    char_to_led(0b00001001);
+    char_to_led(0);
     _delay_ms(mydelay);
     char_to_led(0b01111110);
+    _delay_ms(mydelay);
+    char_to_led(0b00001001);
+    _delay_ms(mydelay);
+    char_to_led(0b00001001);
+    _delay_ms(mydelay);
+    char_to_led(0b00001001);
+    _delay_ms(mydelay);
+    char_to_led(0b01111110);
+    _delay_ms(mydelay);
+    char_to_led(0);
     _delay_ms(mydelay);
 }
 
 void letter_b(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
     char_to_led(0b01111111);
     _delay_ms(mydelay);
     char_to_led(0b01001001);
@@ -205,5 +211,177 @@ void letter_b(void){
     char_to_led(0b01001001);
     _delay_ms(mydelay);
     char_to_led(0b00110110);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_c(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00111110);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b00100010);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_d(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b00111110);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_e(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b01001001);
+    _delay_ms(mydelay);
+    char_to_led(0b01001001);
+    _delay_ms(mydelay);
+    char_to_led(0b01001001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_f(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00001001);
+    _delay_ms(mydelay);
+    char_to_led(0b00001001);
+    _delay_ms(mydelay);
+    char_to_led(0b00001001);
+    _delay_ms(mydelay);
+    char_to_led(0b00000001);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_g(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00111110);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01010001);
+    _delay_ms(mydelay);
+    char_to_led(0b00110010);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_h(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00001000);
+    _delay_ms(mydelay);
+    char_to_led(0b00001000);
+    _delay_ms(mydelay);
+    char_to_led(0b00001000);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_i(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_j(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00110000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b00111111);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_k(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00001000);
+    _delay_ms(mydelay);
+    char_to_led(0b00010100);
+    _delay_ms(mydelay);
+    char_to_led(0b00100010);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_l(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0);
     _delay_ms(mydelay);
 }

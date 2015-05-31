@@ -43,7 +43,7 @@ set(CFLAGS   "${CMCU} ${CDEBUG} ${CDEFS} ${COPT} ${CWARN} ${CSTANDARD} ${CTUNING
 set(CMAKE_C_FLAGS   "${CFLAGS}")
 set(CMAKE_ASM_FLAGS   "${CFLAGS}")
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} letters.h)
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.elf")
 add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${PROJECT_NAME}.elf" "${PROJECT_NAME}.hex")
 add_custom_target(flash_arduino ALL ${AVRDUDE} -F -V -c arduino -p ${MCU} -b 115200 -P ${USBPORT} -U flash:w:${PROJECT_NAME}.hex)

@@ -7,7 +7,7 @@
 #include <avr/io.h>
 #include <stdint-gcc.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>"
+#include <util/delay.h>
 #include <util/setbaud.h>
 
 #define mydelay 500
@@ -38,8 +38,11 @@ void letter_w(void);
 void letter_x(void);
 void letter_y(void);
 void letter_z(void);
+void char_to_led(uint8_t);
 
-
+int text_length = 0;
+char display_text[20];
+char *p_display_text = display_text;
 
 void setup(void){
     //Set Output
@@ -66,6 +69,107 @@ void setup(void){
     UCSR0C = ((1<<UCSZ00)|(1<<UCSZ01));
 }
 
+
+int main(void){
+
+    setup();
+
+    while(1){
+        for(int i = 0; i<text_length; i++){
+            switch(display_text[i]){
+                case 'a':
+                    letter_a();
+                    break;
+                case 'b':
+                    letter_b();
+                    break;
+                case 'c':
+                    letter_c();
+                    break;
+                case 'd':
+                    letter_d();
+                    break;
+                case 'e':
+                    letter_e();
+                    break;
+                case 'f':
+                    letter_f();
+                    break;
+                case 'g':
+                    letter_g();
+                    break;
+                case 'h':
+                    letter_h();
+                    break;
+                case 'i':
+                    letter_i();
+                    break;
+                case 'j':
+                    letter_j();
+                    break;
+                case 'k':
+                    letter_k();
+                    break;
+                case 'l':
+                    letter_l();
+                    break;
+                case 'm':
+                    letter_m();
+                    break;
+                case 'n':
+                    letter_n();
+                    break;
+                case 'o':
+                    letter_o();
+                    break;
+                case 'p':
+                    letter_p();
+                    break;
+                case 'q':
+                    letter_q();
+                    break;
+                case 'r':
+                    letter_r();
+                    break;
+                case 's':
+                    letter_s();
+                    break;
+                case 't':
+                    letter_t();
+                    break;
+                case 'u':
+                    letter_u();
+                    break;
+                case 'v':
+                    letter_v();
+                    break;
+                case 'w':
+                    letter_w();
+                    break;
+                case 'x':
+                    letter_x();
+                    break;
+                case 'y':
+                    letter_y();
+                    break;
+                case 'z':
+                    letter_z();
+                    break;
+            }
+        }
+    }
+    return 0;
+
+}
+
+ISR(USART_RX_vect){
+    //char_to_led(UDR0);
+    unsigned char letter = UDR0;
+    *p_display_text = letter;
+    p_display_text++;
+    text_length++;
+}
+
 /*
  * Maps the input 8-Bit to 8 OutputLEDs
  */
@@ -76,28 +180,6 @@ void char_to_led(uint8_t rx){
     PORTD = d;
 }
 
-int main(void){
-
-    setup();
-
-    while(1){
-
-    }
-    return 0;
-
-}
-
-ISR(USART_RX_vect){
-    //char_to_led(UDR0);
-    unsigned char letter = UDR0;
-    if(letter == 'a' || letter == 'A') {
-        letter_a();
-    } else if(letter == 'b' || letter == 'B'){
-        letter_b();
-    }else{
-        char_to_led(letter);
-    }
-}
 
 // Methods for printing letters
 void letter_a(void){

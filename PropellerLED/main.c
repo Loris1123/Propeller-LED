@@ -10,7 +10,7 @@
 #include <util/delay.h>
 #include <util/setbaud.h>
 
-#define mydelay 500
+#define mydelay 1
 
 void letter_a(void);
 void letter_b(void);
@@ -114,46 +114,46 @@ int main(void){
                     letter_l();
                     break;
                 case 'm':
-                    //letter_m();
+                    letter_m();
                     break;
                 case 'n':
-                    //letter_n();
+                    letter_n();
                     break;
                 case 'o':
-                    //letter_o();
+                    letter_o();
                     break;
                 case 'p':
-                    //letter_p();
+                    letter_p();
                     break;
                 case 'q':
-                    //letter_q();
+                    letter_q();
                     break;
                 case 'r':
-                    //letter_r();
+                    letter_r();
                     break;
                 case 's':
-                    //letter_s();
+                    letter_s();
                     break;
                 case 't':
-                    //letter_t();
+                    letter_t();
                     break;
                 case 'u':
-                    //letter_u();
+                    letter_u();
                     break;
                 case 'v':
-                    //letter_v();
+                    letter_v();
                     break;
                 case 'w':
-                    //letter_w();
+                    letter_w();
                     break;
                 case 'x':
-                    //letter_x();
+                    letter_x();
                     break;
                 case 'y':
-                    //letter_y();
+                    letter_y();
                     break;
                 case 'z':
-                    //letter_z();
+                    letter_z();
                     break;
             }
         }
@@ -385,3 +385,245 @@ void letter_l(void){
     char_to_led(0);
     _delay_ms(mydelay);
 }
+
+void letter_m(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00000010);
+    _delay_ms(mydelay);
+    char_to_led(0b00000100);
+    _delay_ms(mydelay);
+    char_to_led(0b00000010);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_n(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00000100);
+    _delay_ms(mydelay);
+    char_to_led(0b00001000);
+    _delay_ms(mydelay);
+    char_to_led(0b00010000);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_o(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00111110);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b00111110);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_p(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00010001);
+    _delay_ms(mydelay);
+    char_to_led(0b00010001);
+    _delay_ms(mydelay);
+    char_to_led(0b00010001);
+    _delay_ms(mydelay);
+    char_to_led(0b00001110);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_q(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00111110);
+    _delay_ms(mydelay);
+    char_to_led(0b01000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01010001);
+    _delay_ms(mydelay);
+    char_to_led(0b01100001);
+    _delay_ms(mydelay);
+    char_to_led(0b01111110);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_r(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00010001);
+    _delay_ms(mydelay);
+    char_to_led(0b00010001);
+    _delay_ms(mydelay);
+    char_to_led(0b00010001);
+    _delay_ms(mydelay);
+    char_to_led(0b01101110);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_s(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00100110);
+    _delay_ms(mydelay);
+    char_to_led(0b01001001);
+    _delay_ms(mydelay);
+    char_to_led(0b01001001);
+    _delay_ms(mydelay);
+    char_to_led(0b01001001);
+    _delay_ms(mydelay);
+    char_to_led(0b00110010);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_t(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00000001);
+    _delay_ms(mydelay);
+    char_to_led(0b00000001);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00000001);
+    _delay_ms(mydelay);
+    char_to_led(0b00000001);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_u(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00111111);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b00111111);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_v(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00011111);
+    _delay_ms(mydelay);
+    char_to_led(0b00100000);
+    _delay_ms(mydelay);
+    char_to_led(0b01000000);
+    _delay_ms(mydelay);
+    char_to_led(0b00100000);
+    _delay_ms(mydelay);
+    char_to_led(0b00011111);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_w(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0b00100000);
+    _delay_ms(mydelay);
+    char_to_led(0b00010000);
+    _delay_ms(mydelay);
+    char_to_led(0b00100000);
+    _delay_ms(mydelay);
+    char_to_led(0b01111111);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_x(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01100011);
+    _delay_ms(mydelay);
+    char_to_led(0b00010100);
+    _delay_ms(mydelay);
+    char_to_led(0b00001000);
+    _delay_ms(mydelay);
+    char_to_led(0b00010100);
+    _delay_ms(mydelay);
+    char_to_led(0b01100011);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_y(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b00000111);
+    _delay_ms(mydelay);
+    char_to_led(0b00001000);
+    _delay_ms(mydelay);
+    char_to_led(0b01110000);
+    _delay_ms(mydelay);
+    char_to_led(0b00001000);
+    _delay_ms(mydelay);
+    char_to_led(0b00000111);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+void letter_z(void){
+    char_to_led(0);
+    _delay_ms(mydelay);
+    char_to_led(0b01100001);
+    _delay_ms(mydelay);
+    char_to_led(0b01010001);
+    _delay_ms(mydelay);
+    char_to_led(0b01001001);
+    _delay_ms(mydelay);
+    char_to_led(0b01000101);
+    _delay_ms(mydelay);
+    char_to_led(0b01000011);
+    _delay_ms(mydelay);
+    char_to_led(0);
+    _delay_ms(mydelay);
+}
+
+
+
+

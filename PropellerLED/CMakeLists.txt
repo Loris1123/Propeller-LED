@@ -9,8 +9,8 @@ project(PropellerLED C ASM)
 
 SET(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
 
-set(PROG_TYPE arduino)
-set(USBPORT /dev/ttyACM0)
+set(PROG_TYPE avrispmkII)
+set(USBPORT usb)
 set(PROG_ARGS -b 115200 -P ${USBPORT})
 
 set(MCU atmega328p)
@@ -24,7 +24,6 @@ set(AVRDUDE avrdude)
 
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_C_COMPILER   ${AVRC})
-#set(CMAKE_CXX_COMPILER ${AVRCPP})
 set(CMAKE_ASM_COMPILER   ${AVRC})
 
 set(SOURCE_FILES main.c)
@@ -46,4 +45,4 @@ set(CMAKE_ASM_FLAGS   "${CFLAGS}")
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.elf")
 add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${PROJECT_NAME}.elf" "${PROJECT_NAME}.hex")
-add_custom_target(flash_arduino ALL ${AVRDUDE} -F -V -c arduino -p ${MCU} -b 115200 -P ${USBPORT} -U flash:w:${PROJECT_NAME}.hex)
+add_custom_target(flash_arduino ALL ${AVRDUDE} -F -V -c avrispmkII -p ${MCU} -b 115200 -P ${USBPORT} -U flash:w:${PROJECT_NAME}.hex)

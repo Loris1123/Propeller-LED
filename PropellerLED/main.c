@@ -46,7 +46,7 @@ char *p_display_text = display_text;
 
 void setup(void){
     //Set Output
-    DDRB = (1 << PB0) | (1 << PB1) |(1 << PB2) |(1 << PB3) |(1 << PB4) | (1 << PB5);
+    DDRC = (1 << PC0) | (1 << PC1) |(1 << PC2) |(1 << PC3) |(1 << PC4) | (1 << PC5);
     DDRD = (1 << PD6) | (1 << PD7);
 
     // Interrupts
@@ -73,6 +73,8 @@ void setup(void){
 int main(void){
 
     setup();
+
+    char_to_led('b');
 
     while(1){
         for(int i = 0; i<text_length; i++){
@@ -174,9 +176,9 @@ ISR(USART_RX_vect){
  * Maps the input 8-Bit to 8 OutputLEDs
  */
 void char_to_led(uint8_t rx){
-    int b = rx >> 2;
+    int c = rx >> 2;
     int d = (rx & 3) << 6;
-    PORTB = b;
+    PORTC = c;
     PORTD = d;
 }
 

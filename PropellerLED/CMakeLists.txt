@@ -11,10 +11,10 @@ SET(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
 
 set(PROG_TYPE avrispmkII)
 set(USBPORT usb)
-set(PROG_ARGS -b 115200 -P ${USBPORT})
+set(PROG_ARGS -b 9600 -P ${USBPORT})
 
 set(MCU atmega328p)
-set(F_CPU 16000000UL)
+set(F_CPU 1000000UL)
 set(BAUD 9600)
 add_definitions(-DF_CPU=${F_CPU})
 
@@ -45,4 +45,4 @@ set(CMAKE_ASM_FLAGS   "${CFLAGS}")
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.elf")
 add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${PROJECT_NAME}.elf" "${PROJECT_NAME}.hex")
-add_custom_target(flash_arduino ALL ${AVRDUDE} -F -V -c avrispmkII -p ${MCU} -b 115200 -P ${USBPORT} -U flash:w:${PROJECT_NAME}.hex)
+add_custom_target(flash_arduino ALL ${AVRDUDE} -F -V -c avrispmkII -p ${MCU} -b 9600 -P ${USBPORT} -U flash:w:${PROJECT_NAME}.hex)

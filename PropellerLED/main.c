@@ -10,7 +10,7 @@
 #include <util/delay.h>
 #include <util/setbaud.h>
 
-#define mydelay 1
+#define mydelay 500
 
 void letter_a(void);
 void letter_b(void);
@@ -45,9 +45,10 @@ char display_text[20];
 char *p_display_text = display_text;
 
 void setup(void){
+
     //Set Output
-    DDRC = (1 << PC0) | (1 << PC1) |(1 << PC2) |(1 << PC3) |(1 << PC4) | (1 << PC5);
-    DDRD = (1 << PD6) | (1 << PD7);
+    DDRB = (1 << PB0) | (1 << PB6) | (1 << PB7);
+    DDRD = (1 << PB3) | (1 << PB4) | (1 << PB5) | (1 << PB6) | (1 << PD7);
 
     // Interrupts
     sei();
@@ -69,12 +70,9 @@ void setup(void){
     UCSR0C = ((1<<UCSZ00)|(1<<UCSZ01));
 }
 
-
 int main(void){
 
     setup();
-
-    char_to_led('b');
 
     while(1){
         for(int i = 0; i<text_length; i++){
@@ -159,29 +157,54 @@ int main(void){
                     break;
             }
         }
+        char_to_led(0b11111111);
+        _delay_ms(1000);
+        char_to_led(0);
+        _delay_ms(1000);
     }
     return 0;
 
 }
 
 ISR(USART_RX_vect){
-    //char_to_led(UDR0);
     unsigned char letter = UDR0;
     *p_display_text = letter;
     p_display_text++;
     text_length++;
+    //char_to_led(UDR0);
 }
 
 /*
  * Maps the input 8-Bit to 8 OutputLEDs
  */
 void char_to_led(uint8_t rx){
-    int c = rx >> 2;
-    int d = (rx & 3) << 6;
-    PORTC = c;
-    PORTD = d;
-}
+    // LED Mapping:
+    // 0: PB 0
+    // 1: PD 7
+    // 2: PD 6
+    // 3: PD 5
+    // 4: PB 7
+    // 5: PB 6
+    // 6: PD 4
+    // 7: PD 3
 
+    // Get the k'th bit of n. From Stackoverflow
+    //(n & ( 1 << k )) >> k
+    // Clear Ports
+    PORTB = 0;
+    PORTD = 0;
+
+    // TODO: Set LEDs in one instruction
+    // Each LED
+    PORTB |= (((rx & ( 1 << 0 )) >> 0) << PB0);
+    PORTD |= (((rx & ( 1 << 1 )) >> 1) << PD7);
+    PORTD |= (((rx & ( 1 << 2 )) >> 2) << PD6);
+    PORTD |= (((rx & ( 1 << 3 )) >> 3) << PD5);
+    PORTB |= (((rx & ( 1 << 4 )) >> 4) << PB7);
+    PORTB |= (((rx & ( 1 << 5 )) >> 5) << PB6);
+    PORTD |= (((rx & ( 1 << 6 )) >> 6) << PD4);
+    PORTD |= (((rx & ( 1 << 7 )) >> 7) << PD3);
+}
 
 // Methods for printing letters
 void letter_a(void){

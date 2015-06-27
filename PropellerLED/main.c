@@ -39,6 +39,7 @@ void letter_x(void);
 void letter_y(void);
 void letter_z(void);
 void char_to_led(uint8_t);
+void loading_screen(void);
 
 int text_length = 0;
 char display_text[20];
@@ -74,13 +75,10 @@ void setup(void){
     UCSR0C = ((1<<UCSZ00)|(1<<UCSZ01));
 }
 
-int bla = 0;
-
 int main(void){
 
-
     setup();
-
+    loading_screen();
 
     *p_display_text = 'm';
     p_display_text++;
@@ -201,6 +199,56 @@ ISR(INT0_vect){
     char_to_led(0xFF);
     _delay_ms(300);
     char_to_led(0);
+}
+
+void loading_screen(void) {
+    char_to_led(0xFF);
+    _delay_ms(5000);
+    char_to_led(0b01000000);
+    _delay_ms(200);
+    char_to_led(0b00100000);
+    _delay_ms(200);
+    char_to_led(0b00010000);
+    _delay_ms(200);
+    char_to_led(0b00001000);
+    _delay_ms(200);
+    char_to_led(0b00000100);
+    _delay_ms(200);
+    char_to_led(0b00000010);
+    _delay_ms(200);
+    char_to_led(0b00000001);
+    _delay_ms(200);
+    char_to_led(0b00000010);
+    _delay_ms(200);
+    char_to_led(0b00000100);
+    _delay_ms(200);
+    char_to_led(0b00001000);
+    _delay_ms(200);
+    char_to_led(0b00010000);
+    _delay_ms(200);
+    char_to_led(0b00100000);
+    _delay_ms(200);
+    char_to_led(0b01000000);
+    _delay_ms(200);
+    char_to_led(0b00100000);
+    _delay_ms(200);
+    char_to_led(0b00010000);
+    _delay_ms(200);
+    char_to_led(0b00001000);
+    _delay_ms(200);
+    char_to_led(0b00000100);
+    _delay_ms(200);
+    char_to_led(0b00000010);
+    _delay_ms(200);
+    char_to_led(0b00000001);
+    _delay_ms(500);
+    char_to_led(0b10101010);
+    _delay_ms(500);
+    char_to_led(0b01010101);
+    _delay_ms(500);
+    char_to_led(0b10101010);
+    _delay_ms(500);
+
 }
 
 /*

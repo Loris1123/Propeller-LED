@@ -45,10 +45,9 @@ int text_length = 0;
 char display_text[20];
 char *p_display_text = display_text;
 
-int round_completed = 0;
-// Will be set to 1 when one round is completed
-// Then the text will be printed from the beginning.
-// Then the variable will be cleared
+int is_initial_text = 1;
+// Stores if the displayed text is the hello-text.
+// Will be cleared if something is received the first time.
 
 void setup(void){
 
@@ -84,6 +83,7 @@ int main(void){
     setup();
 
     loading_screen();
+
     sei();
 
     while(1){
@@ -92,120 +92,104 @@ int main(void){
     return  0;
 }
 
-int print_text(void){
-    letter_h();
-    _delay_us(300);
-    letter_e();
-    _delay_us(300);
-    letter_l();
-    _delay_us(300);
-    letter_l();
-    _delay_us(300);
-    letter_o();
-    /*
-    *p_display_text = 'm';
-    p_display_text++;
-    text_length++;
-    *p_display_text = 'o';
-    p_display_text++;
-    text_length++;
-    *p_display_text = 'e';
-    p_display_text++;
-    text_length++;
+void print_text(void){
 
-
-    while(1){
-        for(int i = 0; i<text_length; i++){
-            switch(display_text[i]){
-                case 'a':
-                    letter_a();
-                    break;
-                case 'b':
-                    letter_b();
-                    break;
-                case 'c':
-                    letter_c();
-                    break;
-                case 'd':
-                    letter_d();
-                    break;
-                case 'e':
-                    letter_e();
-                    break;
-                case 'f':
-                    letter_f();
-                    break;
-                case 'g':
-                    letter_g();
-                    break;
-                case 'h':
-                    letter_h();
-                    break;
-                case 'i':
-                    letter_i();
-                    break;
-                case 'j':
-                    letter_j();
-                    break;
-                case 'k':
-                    letter_k();
-                    break;
-                case 'l':
-                    letter_l();
-                    break;
-                case 'm':
-                    letter_m();
-                    break;
-                case 'n':
-                    letter_n();
-                    break;
-                case 'o':
-                    letter_o();
-                    break;
-                case 'p':
-                    letter_p();
-                    break;
-                case 'q':
-                    letter_q();
-                    break;
-                case 'r':
-                    letter_r();
-                    break;
-                case 's':
-                    letter_s();
-                    break;
-                case 't':
-                    letter_t();
-                    break;
-                case 'u':
-                    letter_u();
-                    break;
-                case 'v':
-                    letter_v();
-                    break;
-                case 'w':
-                    letter_w();
-                    break;
-                case 'x':
-                    letter_x();
-                    break;
-                case 'y':
-                    letter_y();
-                    break;
-                case 'z':
-                    letter_z();
-                    break;
-            }
-            if(round_completed == 1){
-                round_completed=0;
-                continue;
-            }
-            _delay_ms(3);
-        }
-
+    if(is_initial_text == 1){
+        letter_h();
+        _delay_us(300);
+        letter_e();
+        _delay_us(300);
+        letter_l();
+        _delay_us(300);
+        letter_l();
+        _delay_us(300);
+        letter_o();
+        return;
     }
-    */
 
+    for(int i = 0; i<text_length; i++){
+        switch(display_text[i]){
+            case 'a':
+                letter_a();
+                break;
+            case 'b':
+                letter_b();
+                break;
+            case 'c':
+                letter_c();
+                break;
+            case 'd':
+                letter_d();
+                break;
+            case 'e':
+                letter_e();
+                break;
+            case 'f':
+                letter_f();
+                break;
+            case 'g':
+                letter_g();
+                break;
+            case 'h':
+                letter_h();
+                break;
+            case 'i':
+                letter_i();
+                break;
+            case 'j':
+                letter_j();
+                break;
+            case 'k':
+                letter_k();
+                break;
+            case 'l':
+                letter_l();
+                break;
+            case 'm':
+                letter_m();
+                break;
+            case 'n':
+                letter_n();
+                break;
+            case 'o':
+                letter_o();
+                break;
+            case 'p':
+                letter_p();
+                break;
+            case 'q':
+                letter_q();
+                break;
+            case 'r':
+                letter_r();
+                break;
+            case 's':
+                letter_s();
+                break;
+            case 't':
+                letter_t();
+                break;
+            case 'u':
+                letter_u();
+                break;
+            case 'v':
+                letter_v();
+                break;
+            case 'w':
+                letter_w();
+                break;
+            case 'x':
+                letter_x();
+                break;
+            case 'y':
+                letter_y();
+                break;
+            case 'z':
+                letter_z();
+                break;
+        }
+        _delay_ms(1);
+    }
 }
 
 ISR(USART_RX_vect){
@@ -214,12 +198,16 @@ ISR(USART_RX_vect){
     _delay_ms(300);
     char_to_led(0);
 
+    if (is_initial_text == 1){
+    //    // Clear text
+        is_initial_text = 0;
+    }
+
     // Add Character to list and increment textlength
     unsigned char letter = UDR0;
     *p_display_text = letter;
     p_display_text++;
     text_length++;
-
 }
 
 //Light Barrier
